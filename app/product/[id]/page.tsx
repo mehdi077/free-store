@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { Id, Doc } from '@/convex/_generated/dataModel'
@@ -20,7 +20,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 function ProductPage() {
   const params = useParams()
-  const router = useRouter()
   const productId = params.id as Id<"products">
   const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0)
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
