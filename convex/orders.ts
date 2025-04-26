@@ -18,6 +18,7 @@ export interface OrderWithExtras {
   product_name: string;
   product: string;
   created_at: string;
+  _creationTime: number;
 }
 
 export const getOrders = query({

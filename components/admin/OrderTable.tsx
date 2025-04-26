@@ -4,6 +4,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
+export interface OrderWithExtras extends Order {
+  delivery_address?: string;
+  exact_address?: string;
+  order_remarks?: string;
+  selected_wilaya?: string;
+}
+
 export interface Order {
   _id: string;
   full_name: string;
@@ -24,7 +31,7 @@ export interface Order {
 }
 
 interface Props {
-  orders: Order[];
+  orders: OrderWithExtras[];
 }
 
 export default function OrderTable({ orders }: Props) {
