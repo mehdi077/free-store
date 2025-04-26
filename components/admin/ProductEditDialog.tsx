@@ -148,8 +148,8 @@ export default function ProductEditDialog({ productId, onUpdated }: Props) {
     try {
       setIsSubmitting(true);
       // Upload new files sequentially
-      let newImgUrls: string[] = [];
-      let newDescUrls: string[] = [];
+      const newImgUrls: string[] = [];
+      const newDescUrls: string[] = [];
 
       // Upload main images
       for (const file of newImages) {

@@ -3,7 +3,7 @@ import { IBM_Plex_Sans_Devanagari } from "next/font/google";
 import './globals.css'
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { FB_PIXEL_ID } from "@/lib/fpixel";

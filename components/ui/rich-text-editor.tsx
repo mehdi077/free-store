@@ -1,6 +1,6 @@
 "use client";
 
-import { useEditor, EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/react';
+import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Highlight from '@tiptap/extension-highlight';
 import TextAlign from '@tiptap/extension-text-align';
@@ -16,9 +16,8 @@ import FontFamily from '@tiptap/extension-font-family';
 import React, { useState, useCallback } from 'react';
 import { Button } from './button';
 import { 
-  Bold, Italic, Underline as UnderlineIcon, List, ListOrdered, Heading, Undo, Redo, 
-  AlignLeft, AlignCenter, AlignRight, AlignJustify, Image as ImageIcon, Link as LinkIcon,
-  Youtube, Type, Highlighter, Palette, CircleDot, Trash2, FileVideo
+  Bold, Italic, Underline as UnderlineIcon, List, ListOrdered, Undo, Redo, 
+  AlignLeft, AlignCenter, AlignRight, AlignJustify, Image as ImageIcon, Link as Type, Highlighter, Palette, Trash2 
 } from 'lucide-react';
 
 interface RichTextEditorProps {
@@ -30,12 +29,8 @@ interface RichTextEditorProps {
 
 export const RichTextEditor = ({ value, onChange, placeholder, editorClassName }: RichTextEditorProps) => {
   // State hooks - define all state hooks first
-  const [linkUrl, setLinkUrl] = useState('');
-  const [showLinkInput, setShowLinkInput] = useState(false);
   const [showImageInput, setShowImageInput] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
-  const [showVideoInput, setShowVideoInput] = useState(false);
-  const [videoUrl, setVideoUrl] = useState('');
   
   // Editor initialization hook
   const editor = useEditor({
@@ -87,22 +82,8 @@ export const RichTextEditor = ({ value, onChange, placeholder, editorClassName }
     setShowImageInput(false);
   }, [editor, imageUrl]);
 
-  const addVideo = useCallback(() => {
-    if (!editor) return;
-    const videoId = videoUrl.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/)?.[1];
-    if (videoId) {
-      editor.chain().focus().setYoutubeVideo({ src: videoId }).run();
-      setVideoUrl('');
-      setShowVideoInput(false);
-    }
-  }, [editor, videoUrl]);
 
-  const setLink = useCallback(() => {
-    if (!editor || !linkUrl) return;
-    editor.chain().focus().setLink({ href: linkUrl }).run();
-    setLinkUrl('');
-    setShowLinkInput(false);
-  }, [editor, linkUrl]);
+
 
   if (!editor) {
     return null;
@@ -364,8 +345,6 @@ export const RichTextEditor = ({ value, onChange, placeholder, editorClassName }
               className="p-1"
               onClick={() => {
                 setShowImageInput(!showImageInput);
-                setShowLinkInput(false);
-                setShowVideoInput(false);
               }}
             >
               <ImageIcon className="h-4 w-4" />

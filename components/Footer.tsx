@@ -42,7 +42,7 @@ const Footer = () => {
               )}
             </Link>
             <p className="text-gray-200 leading-relaxed">
-              Votre marketplace de confiance en Algérie pour acheter et vendre en toute sécurité. Nous nous engageons à fournir une expérience d'achat exceptionnelle.
+              {"Votre marketplace de confiance en Algérie pour acheter et vendre en toute sécurité. Nous nous engageons à fournir une expérience d'achat exceptionnelle."}
             </p>
           </div>
 
@@ -84,7 +84,7 @@ const Footer = () => {
                 Produits
               </Link>
               <Link href="/terms" className="text-gray-200 hover:text-white transition">
-                Conditions d'utilisation
+                {"Conditions d'utilisation"}
               </Link>
               <Link href="/privacy" className="text-gray-200 hover:text-white transition">
                 Politique de confidentialité

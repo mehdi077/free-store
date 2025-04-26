@@ -6,7 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useState, useEffect } from "react";
-import { Image as ImageIcon, PencilLine, Check, Upload, AlertCircle, X } from "lucide-react";
+import { Image as ImageIcon, PencilLine, Check, Upload, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -271,7 +271,7 @@ export default function SettingsPage() {
             }
             disabled={!editing}
           />
-          <span>Afficher l'en-tête</span>
+          <span>{"Afficher l'en-tête"}</span>
         </div>
 
         {/* Logos */}

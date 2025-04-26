@@ -5,18 +5,18 @@ import { useParams, useRouter } from 'next/navigation'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { Id, Doc } from '@/convex/_generated/dataModel'
-import Link from 'next/link'
+// import Link from 'next/link'
 import ImagePreview from '@/components/ImagePreview'
-import { Phone, ShoppingCart, Loader2, ArrowLeft, Plus, Minus, CheckCircle, Home, Briefcase, X } from 'lucide-react'
+import { Phone, ShoppingCart, Loader2, Plus, Minus, CheckCircle, Home, Briefcase, X } from 'lucide-react'
 import '@/skeleton.css'
 import { Button } from '@/components/ui/button'
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { PROMO_DISCOUNT } from '@/convex/constants'
-import Image from 'next/image'
-import { cn } from '@/lib/utils'
+// import { PROMO_DISCOUNT } from '@/convex/constants'
+// import Image from 'next/image'
+// import { cn } from '@/lib/utils'
 
 function ProductPage() {
   const params = useParams()

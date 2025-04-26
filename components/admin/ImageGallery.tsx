@@ -74,7 +74,7 @@ export default function ImageGallery({ images, onImageDeleted }: Props) {
               ) : (
                 <>
                   <Copy className="w-4 h-4" />
-                  <span className="text-sm font-medium">Copier l'URL</span>
+                  <span className="text-sm font-medium">{"Copier l'URL"}</span>
                 </>
               )}
             </button>
@@ -94,8 +94,8 @@ export default function ImageGallery({ images, onImageDeleted }: Props) {
                 <AlertDialogHeader>
                   <AlertDialogTitle className="text-red-600">Confirmation de suppression</AlertDialogTitle>
                   <AlertDialogDescription className="text-red-500">
-                    Attention : Cette image pourrait être utilisée dans une ou plusieurs pages de produits. 
-                    Sa suppression pourrait affecter l'affichage des produits concernés.
+                    {"Attention : Cette image pourrait être utilisée dans une ou plusieurs pages de produits. "}
+                    {"Sa suppression pourrait affecter l'affichage des produits concernés."}
                     <br /><br />
                     Êtes-vous sûr de vouloir supprimer cette image ?
                   </AlertDialogDescription>
