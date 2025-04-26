@@ -1,0 +1,317 @@
+[
+    {
+        "wilaya_code": 1,
+        "wilaya_name": "أدرار",
+        "price": 1000,
+        "delivery_office_price": 600,
+        "delivery_office_address": "route de lycée EL MEGHILI derrière l'ancien conseil judiciaire - ADRAR"
+    },
+    {
+        "wilaya_code": 2,
+        "wilaya_name": "الشلف",
+        "price": 600,
+        "delivery_office_price": 350,
+        "delivery_office_address": "HAY BENSSOUNA 48 LOGEMENTS CNP BLOCK D a cote de CASNOS"
+    },
+    {
+        "wilaya_code": 3,
+        "wilaya_name": "الأغواط",
+        "price": 750,
+        "delivery_office_price": 500,
+        "delivery_office_address": "rue ben sahnoun a cote de centre d'imagerie laghouati, cité el makam, laghouat"
+    },
+    {
+        "wilaya_code": 4,
+        "wilaya_name": "أم البواقي",
+        "price": 700,
+        "delivery_office_price": 400,
+        "delivery_office_address": "Ain fekroun, a 300 m station des bus a cote de l'agence CNAS"
+    },
+    {
+        "wilaya_code": 5,
+        "wilaya_name": "باتنة",
+        "price": 650,
+        "delivery_office_price": 350,
+        "delivery_office_address": "rond point de cite 1020 Igtms la route vers CASNOS"
+    },
+    {
+        "wilaya_code": 6,
+        "wilaya_name": "بجاية",
+        "price": 550,
+        "delivery_office_price": 300,
+        "delivery_office_address": "promotionn immobilière EPBTP bloc 4 en face centre commercial boubaya"
+    },
+    {
+        "wilaya_code": 7,
+        "wilaya_name": "بسكرة",
+        "price": 800,
+        "delivery_office_price": 500,
+        "delivery_office_address": "Cité 350 logements Participatifs Zone ouest Bloc 09 local 191"
+    },
+    {
+        "wilaya_code": 8,
+        "wilaya_name": "بشار",
+        "price": 1000,
+        "delivery_office_price": 700,
+        "delivery_office_address": "centre ville just a coté de laboratoire d'analyses ABSI - BECHAR"
+    },
+    {
+        "wilaya_code": 9,
+        "wilaya_name": "البليدة",
+        "price": 250,
+        "delivery_office_price": 0,
+        "delivery_office_address": "monponsie en face lycée omar ibn khatab"
+    },
+    {
+        "wilaya_code": 10,
+        "wilaya_name": "البويرة",
+        "price": 600,
+        "delivery_office_price": 400,
+        "delivery_office_address": "Cadat B ville de bouira"
+    },
+    {
+        "wilaya_code": 11,
+        "wilaya_name": "تمنراست",
+        "price": 1200,
+        "delivery_office_price": 600,
+        "delivery_office_address": "cité el horfra sarsoufa à coté du SEAL"
+    },
+    {
+        "wilaya_code": 12,
+        "wilaya_name": "تبسة",
+        "price": 700,
+        "delivery_office_price": 450,
+        "delivery_office_address": "Skanska, citè el Amel derrière la grande mosquèe"
+    },
+    {
+        "wilaya_code": 13,
+        "wilaya_name": "تلمسان",
+        "price": 700,
+        "delivery_office_price": 400,
+        "delivery_office_address": "Rue de Chetouane A coté de la station d'essence sidi said"
+    },
+    {
+        "wilaya_code": 14,
+        "wilaya_name": "تيارت",
+        "price": 700,
+        "delivery_office_price": 400,
+        "delivery_office_address": "en face mosquée EL SALEM, EPLF tiaret ville"
+    },
+    {
+        "wilaya_code": 15,
+        "wilaya_name": "تيزي وزو",
+        "price": 550,
+        "delivery_office_price": 350,
+        "delivery_office_address": "En face les batiments blues"
+    },
+    {
+        "wilaya_code": 16,
+        "wilaya_name": "الجزائر",
+        "price": 250,
+        "delivery_office_price": 100,
+        "delivery_office_address": "Birkhadem, CHEMAIN ROMAIN 07-70- 23-81-51 CHERAGA: a cote de l'institut pastor 07-70-80-31-37 REGHAIA: cité LPP bourada - reghaia 05-55-21-42-18"
+    },
+    {
+        "wilaya_code": 17,
+        "wilaya_name": "الجلفة",
+        "price": 700,
+        "delivery_office_price": 500,
+        "delivery_office_address": "cité 05 juillet vers l'université ZIAN ACHOUR en face commisariat centrale"
+    },
+    {
+        "wilaya_code": 18,
+        "wilaya_name": "جيجل",
+        "price": 600,
+        "delivery_office_price": 400,
+        "delivery_office_address": "rue bouicher messaoud cité agouf camp chevalier"
+    },
+    {
+        "wilaya_code": 19,
+        "wilaya_name": "سطيف",
+        "price": 550,
+        "delivery_office_price": 350,
+        "delivery_office_address": ",SETIF : Cite el hidab 50 lgtms, LST /////////////// EULMA: à coté d un cafè STARBUCKS"
+    },
+    {
+        "wilaya_code": 20,
+        "wilaya_name": "سعيدة",
+        "price": 750,
+        "delivery_office_price": 450,
+        "delivery_office_address": "Rue Belarbi Laaredj sur la ligne de 20 l'hotel EL MORDJANE - SAIDA centre ville"
+    },
+    {
+        "wilaya_code": 21,
+        "wilaya_name": "سكيكدة",
+        "price": 650,
+        "delivery_office_price": 400,
+        "delivery_office_address": "a cote du centre régional du service national et du complexe des jeunes des freres SAKER 07-70-13-41-27"
+    },
+    {
+        "wilaya_code": 22,
+        "wilaya_name": "سيدي بلعباس",
+        "price": 650,
+        "delivery_office_price": 400,
+        "delivery_office_address": "Cité 144 logts bloc A2 SIDI DJILAL en face cafétéria golden 07-73-33-69-02 07-70-39-71-17 07-72-14-45-58"
+    },
+    {
+        "wilaya_code": 23,
+        "wilaya_name": "عنابة",
+        "price": 550,
+        "delivery_office_price": 350,
+        "delivery_office_address": "cité AADL sidi achour, BT W04 magasin N°03- annaba 07-74-72-95-27"
+    },
+    {
+        "wilaya_code": 24,
+        "wilaya_name": "قالمة",
+        "price": 700,
+        "delivery_office_price": 400,
+        "delivery_office_address": "a cote ecole ennajah centre ville 07-97-80-47-45"
+    },
+    {
+        "wilaya_code": 25,
+        "wilaya_name": "قسنطينة",
+        "price": 550,
+        "delivery_office_price": 350,
+        "delivery_office_address": "EPLF 864 logements'u ali mendili nouvelle ville"
+    },
+    {
+        "wilaya_code": 26,
+        "wilaya_name": "المدية",
+        "price": 600,
+        "delivery_office_price": 400,
+        "delivery_office_address": "pole urbain en face centre commercial et a cote de la station d'essence ben hafri"
+    },
+    {
+        "wilaya_code": 27,
+        "wilaya_name": "مستغانم",
+        "price": 600,
+        "delivery_office_price": 400,
+        "delivery_office_address": "chamouma en face la residence universitaire 2200 lits houari boumedier"
+    },
+    {
+        "wilaya_code": 28,
+        "wilaya_name": "المسيلة",
+        "price": 650,
+        "delivery_office_price": 400,
+        "delivery_office_address": "quartier SOUNITAX, la route vers la station des bus a cote du laboratoire d'analyse médicale EL CHIFAA"
+    },
+    {
+        "wilaya_code": 29,
+        "wilaya_name": "معسكر",
+        "price": 650,
+        "delivery_office_price": 400,
+        "delivery_office_address": "Rue bakhlouf adda en face docteur REFSI"
+    },
+    {
+        "wilaya_code": 30,
+        "wilaya_name": "ورقلة",
+        "price": 800,
+        "delivery_office_price": 500,
+        "delivery_office_address": "Rue el nacer a coté du clinique dentaire boukhris"
+    },
+    {
+        "wilaya_code": 31,
+        "wilaya_name": "وهران",
+        "price": 500,
+        "delivery_office_price": 300,
+        "delivery_office_address": "\"akid lotfi enface la poste pré du commissariat 9ème \""
+    },
+    {
+        "wilaya_code": 32,
+        "wilaya_name": "البيض",
+        "price": 850,
+        "delivery_office_price": 550,
+        "delivery_office_address": "sur la route de MAHBOULA just a cote de sonelgaz en face la maison LG - EL BAYADI"
+    },
+    {
+        "wilaya_code": 34,
+        "wilaya_name": "برج بوعريريج",
+        "price": 600,
+        "delivery_office_price": 400,
+        "delivery_office_address": "Rue laribi lakhdar cite 80 logts coperative deriere le centre commercial carrefour"
+    },
+    {
+        "wilaya_code": 35,
+        "wilaya_name": "بومرداس",
+        "price": 500,
+        "delivery_office_price": 350,
+        "delivery_office_address": "cité 350 Igts bt 21 au rez-de-chaussée"
+    },
+    {
+        "wilaya_code": 37,
+        "wilaya_name": "تندوف",
+        "price": 1300,
+        "delivery_office_price": 900,
+        "delivery_office_address": "local n 02 cité kassabi kism 23 n 122 tindouf"
+    },
+    {
+        "wilaya_code": 38,
+        "wilaya_name": "تيسمسيلت",
+        "price": 700,
+        "delivery_office_price": 400,
+        "delivery_office_address": "plateau a cote e la salle des fetes BADRANE"
+    },
+    {
+        "wilaya_code": 39,
+        "wilaya_name": "الوادي",
+        "price": 800,
+        "delivery_office_price": 500,
+        "delivery_office_address": "Cité 400 logts centre ville EL OUED"
+    },
+    {
+        "wilaya_code": 40,
+        "wilaya_name": "خنشلة",
+        "price": 700,
+        "delivery_office_price": 450,
+        "delivery_office_address": "en face lyceé othmani abdelwahab la nouvelle ville - khanchela"
+    },
+    {
+        "wilaya_code": 41,
+        "wilaya_name": "سوق أهراس",
+        "price": 800,
+        "delivery_office_price": 450,
+        "delivery_office_address": "Route d'Alger, face au DR, KHELIFI - souk ahres 0"
+    },
+    {
+        "wilaya_code": 42,
+        "wilaya_name": "تيبازة",
+        "price": 500,
+        "delivery_office_price": 350,
+        "delivery_office_address": "Aadl 1700 BLOC 29 LOCAL C3"
+    },
+    {
+        "wilaya_code": 43,
+        "wilaya_name": "ميلة",
+        "price": 650,
+        "delivery_office_price": 400,
+        "delivery_office_address": "rond point bousouf"
+    },
+    {
+        "wilaya_code": 44,
+        "wilaya_name": "عين الدفلى",
+        "price": 600,
+        "delivery_office_price": 400,
+        "delivery_office_address": "cité nadjem mohamed, en face hotel NADJEM"
+    },
+    {
+        "wilaya_code": 47,
+        "wilaya_name": "غرداية",
+        "price": 800,
+        "delivery_office_price": 500,
+        "delivery_office_address": "Rue cheikh abdelaziz el Thamini en face du collége cheikh 3 ben yazgen , ghardaia"
+    },
+    {
+        "wilaya_code": 48,
+        "wilaya_name": "غليزان",
+        "price": 600,
+        "delivery_office_price": 450,
+        "delivery_office_address": "Boulevard Zemmoura ( en face CEM NOUVEAU)"
+    },
+    {
+        "wilaya_code": 58,
+        "wilaya_name": "المنيعة",
+        "price": 900,
+        "delivery_office_price": 600,
+        "delivery_office_address": "local n 39 jnan bailek elmniaa"
+    }
+]
