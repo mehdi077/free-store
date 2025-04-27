@@ -1,7 +1,8 @@
+// components/AdminSidebar.tsx
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ClipboardList,
   Box,
@@ -9,6 +10,7 @@ import {
   Image as ImageIcon,
   Settings,
   Home,
+  LogOut,
 } from "lucide-react";
 import clsx from "clsx";
 import { useQuery } from "convex/react";
@@ -31,88 +33,96 @@ const links: NavLink[] = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const settings = useQuery(api.settings.getSettings);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Handle clicks outside the sidebar
+  // Collapse sidebar on outside click (mobile)
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (window.innerWidth < 768 && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        window.innerWidth < 768 &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(e.target as Node)
+      ) {
         setIsExpanded(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Handle sidebar expansion
+  // Expand briefly on mobile
   const handleSidebarClick = () => {
     if (window.innerWidth < 768) {
       setIsExpanded(true);
-      
-      // Clear any existing timeout
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-
-      // Set new timeout to collapse after 3 seconds
-      timeoutRef.current = setTimeout(() => {
-        setIsExpanded(false);
-      }, 3000);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => setIsExpanded(false), 3000);
     }
   };
 
+  if (!settings) return null;
+
   return (
-    <aside 
+    <aside
       ref={sidebarRef}
       onClick={handleSidebarClick}
       className={clsx(
         "h-screen bg-gray-900 text-gray-100 flex flex-col shadow-lg sticky top-0 transition-all duration-300",
-        "md:w-60", // Always expanded on desktop
-        isExpanded ? "w-60" : "w-16" // Mobile behavior
+        "md:w-60",
+        isExpanded ? "w-60" : "w-16"
       )}
     >
-      <div className={clsx(
-        "px-5 py-4 text-2xl font-semibold tracking-wide border-b border-gray-800",
-        !isExpanded && "md:px-5 px-2"
-      )}>
-        <span className={clsx(
-          "md:block", // Always show on desktop
-          !isExpanded && "hidden md:block", // Hide on mobile when collapsed, but show on desktop
-          "truncate" // Prevent long names from breaking layout
-        )}>
-          {settings?.store_name}
+      {/* Header */}
+      <div
+        className={clsx(
+          "px-5 py-4 text-2xl font-semibold tracking-wide border-b border-gray-800",
+          !isExpanded && "md:px-5 px-2"
+        )}
+      >
+        <span
+          className={clsx(
+            "md:block",
+            !isExpanded && "hidden md:block",
+            "truncate"
+          )}
+        >
+          {settings.store_name}
         </span>
-        <span className={clsx(
-          "md:hidden", // Never show on desktop
-          isExpanded && "hidden", // Hide when expanded on mobile
-          "text-center block" // Center the initials
-        )}>
-          {settings?.store_name?.split(' ').map(word => word[0]).join('').slice(0, 2)}
+        <span
+          className={clsx("md:hidden", isExpanded && "hidden", "text-center")}
+        >
+          {settings.store_name
+            ?.split(" ")
+            .map((w) => w[0])
+            .join("")
+            .slice(0, 2)}
         </span>
       </div>
+
+      {/* Shop link */}
       <div className="border-y border-gray-800 p-4">
         <Link
           href="/"
           target="_blank"
           className={clsx(
-            "flex items-center gap-3 rounded-md transition-colors text-gray-300 hover:bg-gray-800 hover:text-white",
-            isExpanded ? "px-4 py-2" : "justify-center px-2 py-2 md:justify-start md:px-4"
+            "flex items-center gap-3 transition-colors",
+            isExpanded ? "px-4 py-2" : "justify-center px-2 py-2 md:justify-start md:px-4",
+            "text-gray-300 hover:bg-gray-800 hover:text-white"
           )}
         >
           <Home className="w-5 h-5" />
-          <span className={clsx(
-            "text-sm font-medium",
-            "md:block", // Always show on desktop
-            !isExpanded && "hidden" // Hide on mobile when collapsed
-          )}>
+          <span
+            className={clsx("text-sm font-medium", "md:block", !isExpanded && "hidden")}
+          >
             Voir la boutique
           </span>
         </Link>
       </div>
+
+      {/* Navigation links */}
       <nav className="flex-1 py-4 space-y-1">
         {links.map(({ href, label, Icon }) => {
           const active = pathname === href;
@@ -129,17 +139,40 @@ export default function AdminSidebar() {
               )}
             >
               <Icon className="w-5 h-5" />
-              <span className={clsx(
-                "text-sm font-medium",
-                "md:block", // Always show on desktop
-                !isExpanded && "hidden" // Hide on mobile when collapsed
-              )}>
+              <span
+                className={clsx("text-sm font-medium", "md:block", !isExpanded && "hidden")}
+              >
                 {label}
               </span>
             </Link>
           );
         })}
       </nav>
+
+      {/* Logout button */}
+      <div className="border-t border-gray-800 p-4">
+        <button
+          onClick={() => router.push("/admin/login")}
+          className={clsx(
+            "flex items-center gap-3 py-2 mx-2 rounded-md transition-colors",
+            isExpanded
+              ? "px-4"
+              : "justify-center px-2 md:justify-start md:px-4",
+            "text-gray-300 hover:bg-gray-800 hover:text-white"
+          )}
+        >
+          <LogOut className="w-5 h-5" />
+          <span
+            className={clsx(
+              "text-sm font-medium",
+              "md:block",
+              !isExpanded && "hidden"
+            )}
+          >
+            Déconnexion
+          </span>
+        </button>
+      </div>
     </aside>
   );
 }

@@ -4,8 +4,6 @@ import './globals.css'
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 import Header from "@/components/Header";
 // import Footer from "@/components/Footer";
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { PostHogProvider } from "@/components/PostHogProvider";
 import { FB_PIXEL_ID } from "@/lib/fpixel";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
@@ -32,11 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
-    console.warn('Google Analytics Measurement ID is missing!');
-  } else {
-    console.log('Google Analytics Measurement ID is present :', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
-  }
+  
   return (
     <html lang="fr">
       <head>
@@ -80,10 +74,6 @@ export default function RootLayout({
       </head>
       <body className={`${ibmPlexSansDevanagari.variable} antialiased bg-[#d1d9e6]`}>
           <ConvexClientProvider>
-            <PostHogProvider>
-              <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
-              
-              
               <Header />
               <main className="min-h-screen">
                 {children}
@@ -91,8 +81,6 @@ export default function RootLayout({
               {/* <Footer /> */}
               <Toaster />
               <SonnerToaster richColors position="top-right" />
-
-            </PostHogProvider>
           </ConvexClientProvider>
       </body>
     </html>

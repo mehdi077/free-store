@@ -2,7 +2,10 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
-
+    admin_creds: defineTable({
+      admin_username: v.optional(v.string()),
+      admin_password: v.optional(v.string()),
+    }),
 
     tarif_livraison: defineTable({
       wilaya_code: v.optional(v.string()),
