@@ -108,26 +108,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                                         
                                         e.preventDefault();
                                         // window.location.href = `/checkout/${product._id}`;
-                                        if (typeof window !== "undefined" && typeof window.fbq === "function") {
-                                            window.fbq('track', 'InitiateCheckout', { 
-                                                value: product?.price, 
-                                                currency: 'DZD',
-                                                content_name: product?.name,
-                                                content_ids: [product._id, product.category],
-                                                content_type: 'product'
-                                            });
-                                
-                                            console.log("Facebook InitiateCheckout event sent!");
-                                
-                                            // Add a slight delay to ensure the event is tracked before navigating
-                                            setTimeout(() => {
-                                                window.location.href = `/checkout/${product._id}`;
-                                            }, 500); // Delay of 500ms
-                                        } else {
-                                            console.warn("Facebook Pixel is not loaded yet.");  
-                                            // Navigate anyway if Pixel isn't available
-                                            window.location.href = `/checkout/${product._id}`;
-                                        }
                                     }}
                                 >
                                     <ShoppingCart size={14} />
