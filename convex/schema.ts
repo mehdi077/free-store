@@ -38,6 +38,7 @@ export default defineSchema({
       real_images: v.optional(v.array(v.string())),
       product_id: v.string(),
       category: v.id("categories"),
+      promo_price: v.optional(v.number()),
     }).index("by_category", ["category"]),
 
     orders: defineTable({

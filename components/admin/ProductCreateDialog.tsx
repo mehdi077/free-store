@@ -38,6 +38,7 @@ export default function ProductCreateDialog({ onCreated }: Props) {
   const [categoryId, setCategoryId] = useState<Id<"categories"> | "add" | null>(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [promoPrice, setPromoPrice] = useState<number | undefined>(undefined);
   const [description, setDescription] = useState("");
   const [images, setImages] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
@@ -108,6 +109,7 @@ export default function ProductCreateDialog({ onCreated }: Props) {
     setCategoryId(null);
     setName("");
     setPrice(0);
+    setPromoPrice(undefined);
     setDescription("");
     setImages([]);
     setPreviewUrls([]);
@@ -176,6 +178,7 @@ export default function ProductCreateDialog({ onCreated }: Props) {
       await createProduct({
         name,
         price,
+        promoPrice,
         images: imageUrls, // Pass URLs instead of storage IDs
         description,
         descriptionImages: descriptionImageUrls.length > 0 ? descriptionImageUrls : undefined,
@@ -268,6 +271,20 @@ export default function ProductCreateDialog({ onCreated }: Props) {
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(parseInt(e.target.value || "0", 10))}
+                  className="pr-8"
+                />
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 opacity-50 pointer-events-none">
+                  DA
+                </span>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label>Prix promotionnel (optionnel)</Label>
+              <div className="relative">
+                <Input
+                  type="number"
+                  value={promoPrice ?? ""}
+                  onChange={(e) => setPromoPrice(e.target.value ? parseInt(e.target.value, 10) : undefined)}
                   className="pr-8"
                 />
                 <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 opacity-50 pointer-events-none">

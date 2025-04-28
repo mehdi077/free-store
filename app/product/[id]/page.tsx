@@ -33,6 +33,9 @@ function ProductPage() {
     productId
   })
 
+  // Determine the actual unit price (use promo_price if available)
+  const unitPrice = product?.promo_price ?? product?.price ?? 0;
+
   const category = useQuery(api.products.getCategoryById, 
     !product?.category ? "skip" : { 
       categoryId: product.category 
@@ -64,7 +67,7 @@ function ProductPage() {
         content_name: product.name,
         content_ids: [productId],
         content_type: 'product',
-        value: product.price,
+        value: product.promo_price ?? product.price,
         currency: 'DZD'
       });
       console.log("Facebook ViewContent event sent!");
@@ -74,11 +77,11 @@ function ProductPage() {
   
   useEffect(() => {
     if (product) {
-      const basePrice = product.price * quantity
+      const basePrice = unitPrice * quantity
       const totalWithDelivery = basePrice + deliveryPrice
       setTotalPrice(totalWithDelivery)
     }
-  }, [product, quantity, deliveryPrice])
+  }, [product, unitPrice, quantity, deliveryPrice])
 
   useEffect(() => {
     const isFullNameValid = fullName.trim().length > 0
@@ -110,7 +113,7 @@ function ProductPage() {
         content_name: product?.name,
         content_ids: [productId],
         content_type: "product",
-        value: product?.price,
+        value: product?.promo_price ?? product?.price,
         currency: "DZD"
       });
       console.log("Facebook InitiateCheckout event sent!");
@@ -289,7 +292,17 @@ function ProductPage() {
         <div className="md:w-1/2 md:sticky md:top-8">
           <div className="bg-white px-4 py-4 shadow-lg rounded-lg border border-gray-200 md:p-8 md:mb-8">
             <h1 className="text-[17px] text-gray-800 font-semibold">{product.name}</h1>
-            <p className="text-[23px] font-bold mt-2 mb-4 text-black">{product.price} DA</p>
+            {product.promo_price ? (
+              <div className="flex items-baseline gap-2 mt-2 mb-4">
+                <span className="text-[23px] font-bold text-red-600">{product.promo_price} DA</span>
+                <span className="text-sm text-gray-500 line-through">{product.price} DA</span>
+                <span className="ml-auto bg-red-100 text-red-700 text-xs font-semibold px-2 py-1 rounded">
+                  -{Math.round(((product.price - product.promo_price) / product.price) * 100)}%
+                </span>
+              </div>
+            ) : (
+              <p className="text-[23px] font-bold mt-2 mb-4 text-black">{product.price} DA</p>
+            )}
             
             {/* Quantity Selector */}
             <div className="flex items-center justify-between mb-6 bg-gray-50 p-4 rounded-lg">
@@ -441,8 +454,8 @@ function ProductPage() {
             {/* Price Summary */}
             <div className="mt-4 space-y-1.5 border-t pt-4">
               <div className="flex justify-between text-xs text-gray-600">
-                <span>Prix ({quantity} x {product.price} DA)</span>
-                <span>{product.price * quantity} DA</span>
+                <span>Prix ({quantity} x {unitPrice} DA)</span>
+                <span>{unitPrice * quantity} DA</span>
               </div>
               <div className="flex justify-between text-xs text-gray-600">
                 <span>Frais de livraison</span>

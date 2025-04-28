@@ -51,6 +51,7 @@ export default function ProductEditDialog({ productId, onUpdated }: Props) {
   const [categoryId, setCategoryId] = useState<Id<"categories"> | null>(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
+  const [promoPrice, setPromoPrice] = useState<number | undefined>(undefined);
   const [description, setDescription] = useState("");
 
   // Existing image URLs
@@ -75,6 +76,7 @@ export default function ProductEditDialog({ productId, onUpdated }: Props) {
     setCategoryId(product.category as Id<"categories">);
     setName(product.name);
     setPrice(product.price);
+    setPromoPrice(product.promo_price ?? undefined);
     setDescription(product.description ?? "");
     setImages(product.images);
     setDescriptionImages(product.description_images || []);
@@ -190,6 +192,7 @@ export default function ProductEditDialog({ productId, onUpdated }: Props) {
         productId,
         name,
         price,
+        promoPrice,
         categoryId,
         images: [...images, ...newImgUrls],
         description,
@@ -257,6 +260,22 @@ export default function ProductEditDialog({ productId, onUpdated }: Props) {
                 onChange={(e) => setPrice(parseInt(e.target.value || "0", 10))}
               />
               {errors.price && <p className="text-sm text-red-500">{errors.price}</p>}
+            </div>
+
+            {/* Promo Price */}
+            <div className="space-y-2">
+              <Label>Prix promotionnel (optionnel)</Label>
+              <div className="relative">
+                <Input
+                  type="number"
+                  value={promoPrice ?? ""}
+                  onChange={(e) => setPromoPrice(e.target.value ? parseInt(e.target.value, 10) : undefined)}
+                  className="pr-8"
+                />
+                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 opacity-50 pointer-events-none">
+                  DA
+                </span>
+              </div>
             </div>
 
             {/* Description */}

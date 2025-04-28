@@ -1,3 +1,4 @@
+// convex/products.ts
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { PRODUCTS_PER_PAGE } from "./constants";
@@ -29,6 +30,7 @@ export const getProductsByCategory = query({
       _creationTime: v.number(),
       name: v.string(),
       price: v.number(),
+      promo_price: v.optional(v.number()),
       images: v.array(v.string()),
       description: v.optional(v.string()),
       description_images: v.optional(v.array(v.string())),
@@ -63,6 +65,7 @@ export const getProductById = query({
     _creationTime: v.number(),
     name: v.string(),
     price: v.number(),
+    promo_price: v.optional(v.number()),
     images: v.array(v.string()),
     description: v.optional(v.string()),
     description_images: v.optional(v.array(v.string())),
@@ -134,6 +137,7 @@ export const getProductsByCategoryPaginated = query({
         _creationTime: v.number(),
         name: v.string(),
         price: v.number(),
+        promo_price: v.optional(v.number()),
         images: v.array(v.string()),
         description: v.optional(v.string()),
         description_images: v.optional(v.array(v.string())),
@@ -145,16 +149,13 @@ export const getProductsByCategoryPaginated = query({
   }),
   handler: async (ctx, args) => {
     const skip = (args.page - 1) * PRODUCTS_PER_PAGE;
-
     const products = await ctx.db
       .query("products")
       .withIndex("by_category", (q) => q.eq("category", args.categoryId))
       .collect()
       .then((allProducts) => {
         const paginatedProducts = allProducts.slice(skip, skip + PRODUCTS_PER_PAGE);
-        return {
-          products: paginatedProducts,
-        };
+        return { products: paginatedProducts };
       });
     return products;
   },
@@ -203,13 +204,9 @@ export const createOrder = mutation({
       order_remarks: args.orderRemarks,
       total_price: args.totalPrice,
     });
-
-    // Fetch the complete order object after insertion
     const order = await ctx.db.get(orderId);
-    if (!order) {
-      throw new Error("Order not found"); // Handle case where order is not found
-    }
-    return order; // Ensure we return the complete order object
+    if (!order) throw new Error("Order not found");
+    return order;
   },
 });
 
@@ -254,6 +251,7 @@ export const searchProducts = query({
       _creationTime: v.number(),
       name: v.string(),
       price: v.number(),
+      promo_price: v.optional(v.number()),
       images: v.array(v.string()),
       description: v.optional(v.string()),
       description_images: v.optional(v.array(v.string())),
@@ -263,14 +261,10 @@ export const searchProducts = query({
     })
   ),
   handler: async (ctx, args) => {
-    const products = await ctx.db
-      .query("products")
-      .collect();
-
-    const searchResults = products.filter(product => 
+    const products = await ctx.db.query("products").collect();
+    const searchResults = products.filter((product) =>
       product.name.toLowerCase().includes(args.searchQuery.toLowerCase())
     );
-
     return searchResults;
   },
 });
@@ -279,11 +273,7 @@ export const getTotalProductCount = query({
   args: {},
   returns: v.number(),
   handler: async (ctx) => {
-    const productCount = await ctx.db
-      .query("products")
-      .collect()
-      .then((products) => products.length);
-    return productCount
+    return ctx.db.query("products").collect().then((p) => p.length);
   },
 });
 
@@ -291,6 +281,7 @@ export const createProduct = mutation({
   args: {
     name: v.string(),
     price: v.number(),
+    promoPrice: v.optional(v.number()),
     images: v.array(v.string()),
     description: v.optional(v.string()),
     descriptionImages: v.optional(v.array(v.string())),
@@ -303,6 +294,7 @@ export const createProduct = mutation({
     _creationTime: v.number(),
     name: v.string(),
     price: v.number(),
+    promo_price: v.optional(v.number()),
     images: v.array(v.string()),
     description: v.optional(v.string()),
     description_images: v.optional(v.array(v.string())),
@@ -314,6 +306,7 @@ export const createProduct = mutation({
     const insertedId = await ctx.db.insert("products", {
       name: args.name,
       price: args.price,
+      promo_price: args.promoPrice,
       images: args.images,
       description: args.description,
       description_images: args.descriptionImages,
@@ -321,7 +314,6 @@ export const createProduct = mutation({
       product_id: args.productIdString,
       category: args.categoryId,
     });
-
     const product = await ctx.db.get(insertedId);
     if (!product) throw new Error("Produit introuvable après insertion.");
     return product;
@@ -340,6 +332,7 @@ export const updateProduct = mutation({
     productId: v.id("products"),
     name: v.string(),
     price: v.number(),
+    promoPrice: v.optional(v.number()),
     images: v.array(v.string()),
     description: v.optional(v.string()),
     descriptionImages: v.optional(v.array(v.string())),
@@ -351,6 +344,7 @@ export const updateProduct = mutation({
     _creationTime: v.number(),
     name: v.string(),
     price: v.number(),
+    promo_price: v.optional(v.number()),
     images: v.array(v.string()),
     description: v.optional(v.string()),
     description_images: v.optional(v.array(v.string())),
@@ -362,13 +356,13 @@ export const updateProduct = mutation({
     await ctx.db.patch(args.productId, {
       name: args.name,
       price: args.price,
+      promo_price: args.promoPrice,
       images: args.images,
       description: args.description,
       description_images: args.descriptionImages,
       real_images: args.realImages,
       category: args.categoryId,
     });
-
     const updated = await ctx.db.get(args.productId);
     if (!updated) throw new Error("Produit non trouvé après mise à jour");
     return updated;
