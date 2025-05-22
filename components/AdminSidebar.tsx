@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   ClipboardList,
   Box,
@@ -16,6 +16,7 @@ import clsx from "clsx";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect, useRef, useState } from "react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { toast } from "@/components/ui/use-toast";
 import { Id } from "@/convex/_generated/dataModel";
 
@@ -39,7 +40,6 @@ const links: NavLink[] = [
 
 export default function AdminSidebar({ userId }: AdminSidebarProps) {
   const pathname = usePathname();
-  const router = useRouter();
   const settings = useQuery(api.settings.getSettings);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLElement>(null);
@@ -164,7 +164,7 @@ export default function AdminSidebar({ userId }: AdminSidebarProps) {
               await terminateSession({ userId: userId as Id<"users"> });
               toast({ title: "Déconnexion", description: "Vous avez été déconnecté." });
               window.location.reload();
-            } catch (error) {
+            } catch {
               toast({ title: "Erreur", description: "Erreur lors de la déconnexion.", variant: "destructive" });
             }
           }}
