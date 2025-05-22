@@ -57,7 +57,7 @@ the idea was to be able to have an e commerce website for free, levreging the ve
 
 ![Screenshot from 2025-05-13 07-14-26](https://github.com/user-attachments/assets/f8d15a4d-684b-402c-ad7a-5dda0fe7162f)
 
-- an admin panel wich is protected by an email and password, that has orders managment, prodct creation, product editing, category creation, a gallery, logo changing, name changing ... etc
+- an admin panel wich is protected by an email and password (can be accessed using `your-store-name.vercel.app/admin`), that has orders managment, prodct creation, product editing, category creation, a gallery, logo changing, name changing ... etc
 
 ![Screenshot from 2025-04-27 23-19-33](https://github.com/user-attachments/assets/52e8cdac-1e8e-4daf-893e-ec837ecee1c4)
 ![Screenshot from 2025-04-27 23-18-25](https://github.com/user-attachments/assets/bbf494ff-a1ab-431e-bbca-945b12bf5f1b)
