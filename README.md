@@ -9,7 +9,7 @@ the idea was to be able to have an e commerce website for free, levreging the ve
 
 - setting up this web app is simple and stright forward:
 
-1 * fork this repo into you github account.
+1 * fork this repo into your github account.
 
 2 * create a vercel account, and connect your account with your github account.
 
@@ -67,7 +67,11 @@ the idea was to be able to have an e commerce website for free, levreging the ve
 ![Screenshot from 2025-04-27 23-19-42](https://github.com/user-attachments/assets/910c6429-c2a5-4f87-9c84-c91357819e00)
 
 
+## how i made this project:
 
+around 90% of the code that made up this project was written by ai, using cursor, very crazy preformance, all i had to do is prompt and direct and manage the llm, UI, backend, information about things i didn't know, all have been made easy and possible because of using cursor, it would otherwise could take me forever to do this exact project.
+
+vibe coding (with enough technical knowldge) is the future of web development.
 
 
 
