@@ -26,7 +26,7 @@ const Footer = () => {
               {settings?.big_logo ? (
                 <Image
                   src={settings.big_logo}
-                  alt="Vibe Shop"
+                  alt="free store"
                   width={200}
                   height={50}
                   className="object-contain h-[50px] w-auto bg-white p-2 rounded-lg"
@@ -35,7 +35,7 @@ const Footer = () => {
               ) : (
                 <Image
                   src={logo}
-                  alt="Vibe Shop"
+                  alt="free store"
                   className="object-contain h-[50px] w-auto bg-white p-2 rounded-lg"
                   priority
                 />

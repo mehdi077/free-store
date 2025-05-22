@@ -13,7 +13,6 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 
 import TarifLivraisonInitializer from "@/components/TarifLivraisonInitializer";
-import AdminCredsInitializer from "@/components/AdminCredsInitializer";
 
 function Header() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -28,8 +27,7 @@ function Header() {
   return (
     <header className="w-full border-b py-2 bg-white shadow-lg sticky top-0 z-10">
 
-      {/* Ensure default admin creds exist before anything */}
-      <AdminCredsInitializer />
+
 
       {/* Existing tarif initializer */}
       <TarifLivraisonInitializer />
@@ -51,7 +49,7 @@ function Header() {
             {settings.big_logo ? (
               <Image
                 src={settings.big_logo}
-                alt="Vibe Shop"
+                alt="free store"
                 width={160}
                 height={40}
                 className="object-contain h-[40px] w-auto"
@@ -60,7 +58,7 @@ function Header() {
             ) : (
               <Image
                 src={logo}
-                alt="Vibe Shop"
+                alt="free store"
                 className="object-contain h-[40px] w-auto"
                 priority
               />

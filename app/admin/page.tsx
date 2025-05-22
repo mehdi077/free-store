@@ -1,12 +1,8 @@
 
+
 import { redirect } from "next/navigation";
 
-// function AdminPanel() {
-//   return (
-//     <div>AdminPanel</div>
-//   )
-// }
-
-export default function AdminRootPage() {
+export default async function AdminRootPage() {
+    
   redirect("/admin/orders");
 }

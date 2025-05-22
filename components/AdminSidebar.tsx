@@ -13,14 +13,20 @@ import {
   LogOut,
 } from "lucide-react";
 import clsx from "clsx";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect, useRef, useState } from "react";
+import { toast } from "@/components/ui/use-toast";
+import { Id } from "@/convex/_generated/dataModel";
 
 interface NavLink {
   href: string;
   label: string;
   Icon: React.ComponentType<{ className?: string }>;
+}
+
+interface AdminSidebarProps {
+  userId: string;
 }
 
 const links: NavLink[] = [
@@ -31,13 +37,14 @@ const links: NavLink[] = [
   { href: "/admin/settings", label: "Paramètres", Icon: Settings },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({ userId }: AdminSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const settings = useQuery(api.settings.getSettings);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const sidebarRef = useRef<HTMLElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const terminateSession = useMutation(api.auth_admin.terminateSession);
 
   // Collapse sidebar on outside click (mobile)
   useEffect(() => {
@@ -152,7 +159,15 @@ export default function AdminSidebar() {
       {/* Logout button */}
       <div className="border-t border-gray-800 p-4">
         <button
-          onClick={() => router.push("/admin/login")}
+          onClick={async () => {
+            try {
+              await terminateSession({ userId: userId as Id<"users"> });
+              toast({ title: "Déconnexion", description: "Vous avez été déconnecté." });
+              window.location.reload();
+            } catch (error) {
+              toast({ title: "Erreur", description: "Erreur lors de la déconnexion.", variant: "destructive" });
+            }
+          }}
           className={clsx(
             "flex items-center gap-3 py-2 mx-2 rounded-md transition-colors",
             isExpanded

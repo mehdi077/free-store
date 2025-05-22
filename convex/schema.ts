@@ -1,7 +1,9 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { authTables } from "@convex-dev/auth/server";
 
 export default defineSchema({
+    ...authTables,
     admin_creds: defineTable({
       admin_username: v.optional(v.string()),
       admin_password: v.optional(v.string()),
