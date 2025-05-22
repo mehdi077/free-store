@@ -16,7 +16,6 @@ import clsx from "clsx";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { useEffect, useRef, useState } from "react";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { toast } from "@/components/ui/use-toast";
 import { Id } from "@/convex/_generated/dataModel";
 
